@@ -1,3 +1,7 @@
-service : {
-    "greet": (text) -> (text) query;
+type FileInput = record { content : vec nat8; name : text };
+type Result = variant { Ok : text; Err : text };
+service : () -> {
+  get_file : (text) -> (vec nat8) query;
+  get_files : () -> (vec FileInput) query;
+  upload_file : (FileInput) -> (Result);
 }
